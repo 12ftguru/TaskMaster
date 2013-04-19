@@ -1,0 +1,53 @@
+$base-color: #353535;
+$active-color: #ffffff;
+$pastdue-fg-color: #ffcccc;
+$pastdue-sel-color: #990000;
+
+$base-gradient: 'flat';
+$tabs-dark: $base-color;
+
+$tabs-dark-active-color: saturate($active-color, 20%);
+$tabs-bottom-active-gradient: 'recessed';
+
+$list-bg-color: lighten($base-color, 20%);
+$list-color: $active-color;
+
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/all';
+
+@include sencha-toolbar-ui('dark', $base-color, $base-gradient);
+// You may remove any of the following modules that you
+// do not use in order to create a smaller css file.
+
+.task-wrapper {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #111;
+  @include background-image(linear-gradient(lighten($base-color, 8%), lighten($base-color, 5%) 30%, lighten($base-color, 3%) 70%, $base-color));
+}
+
+.x-list-normal .task-wrapper.x-list-item.x-item-selected.x-list-item-tpl, .x-list-normal .x-list-item.x-item-selected .x-dock-horizontal {
+  @include background-image(linear-gradient(lighten($base-color, 50%), lighten($base-color, 60%) 30%, lighten($base-color, 90%) 70%, lighten($base-color, 100%)));
+}
+
+.task {
+padding-left: 30px;
+background: transparent;
+}
+.task.complete {
+   @include background(image-url("/resources/images/check.png") no-repeat);
+}
+.task.complete {
+   @include background(image-url("/resources/images/check.png") no-repeat);
+}
+.task.pastdue {
+    color: $pastdue-fg-color;
+}
+.task-wrapper.x-item-selected .task.pastdue {
+    color: $pastdue-sel-color;
+}
+
+
+@include icon('list', 'l');
+@include icon('check', '3');
+@include icon('warn', '!');
+@include icon('complete', '2');
